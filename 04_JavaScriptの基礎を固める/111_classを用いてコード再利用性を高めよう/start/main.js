@@ -20,3 +20,13 @@ document.addEventListener('DOMContentLoaded', function () {
         return `${acc}<span class="char">${curr}</span>`;
     }, "");
 });
+
+class TextAnimation {
+    constructor(el) {
+        this.el = el;
+        alert(el);
+    }
+}
+
+const ta = new TextAnimation('hello world');
+alert(ta.el);
