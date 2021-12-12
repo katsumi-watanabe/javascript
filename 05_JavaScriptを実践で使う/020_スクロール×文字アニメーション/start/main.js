@@ -1,43 +1,31 @@
 document.addEventListener('DOMContentLoaded', function () {
-    const ta = new TextAnimation('.animate-title');
-    ta.animate();
-});
-
-// text-animation.jsに以下のコードをカット＆ペースト
-// してファイル分割をしましょう。
-class TextAnimation {
-    constructor(el) {
-        this.DOM = {};
-        this.DOM.el = document.querySelector(el);
-        this.chars = this.DOM.el.innerHTML.trim().split("");
-        this.DOM.el.innerHTML = this._splitText();
+    
+    
+    // text-animation.jsに以下のコードをカット＆ペースト
+    // してファイル分割をしましょう。
+    const els = document.querySelectorAll('.animate-title');
+    const cb = function (entries, observer) {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const ta = new TextAnimation(entry.target);
+                ta.animate();
+                observer.unobserve(entry.target);
+                // console.log('inview');
+                // entry.target.classList.add('inview');
+                // observer.unobserve(entry.target);
+            } else {
+                // console.log('out view');
+                entry.target.classList.remove('inview');
+            }
+        });
+        // alert('intersecting');
     }
-    _splitText() {
-        return this.chars.reduce((acc, curr) => {
-            curr = curr.replace(/\s+/, '&nbsp;');
-            return `${acc}<span class="char">${curr}</span>`;
-        }, "");
-    }
-    animate() {
-        this.DOM.el.classList.toggle('inview');
-    }
-}
-class TweenTextAnimation extends TextAnimation {
-    constructor(el) {
-        super(el);
-        this.DOM.chars = this.DOM.el.querySelectorAll('.char');
+    const options = {
+        root: null,
+        rootMargin: "0px",
+        threshold: 0
     }
     
-    animate() {
-        this.DOM.el.classList.add('inview');
-        this.DOM.chars.forEach((c, i) => {
-            TweenMax.to(c, .6, {
-                ease: Back.easeOut,
-                delay: i * .05,
-                startAt: { y: '-50%', opacity: 0},
-                y: '0%',
-                opacity: 1
-            });
-        });
-    }
-}
+    const io = new IntersectionObserver(cb, options);
+    els.forEach(el => io.observe(el));
+});
