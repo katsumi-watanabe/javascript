@@ -1,6 +1,39 @@
 $cBlack: black;
 $cWhite: white;
 
+#container {
+  position: relative;
+  background-color: teal;
+  height: 100vh;
+  z-index: 2;
+  transition: all 0.5s;
+}
+
+.header {
+  background-color: $cWhite;
+  height: 100px;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+body {
+  margin: 0;
+}
+
+.menu-open {
+  & #container {
+    transform: translate(-300px, 60px);
+    box-shadow: 0 8px 40px -10px rgba(0, 0, 0, 0.8);
+  }
+}
+
+.mobile-menu {
+  position: fixed;
+  right: 0;
+  top: 60px;
+}
+
 .mobile-menu-btn {
   background-color: unset;
   border: none;
@@ -22,13 +55,10 @@ $cWhite: white;
 }
 
 .menu-open {
-  background-color: $cBlack;
-
   & .mobile-menu-btn {
     & > span {
       background-color: $cWhite;
-
-      &:nth-child(1) {
+       &:nth-child(1) {
         transition-delay: 70ms;
         transform: translateY(11px) rotate(135deg);
       }
