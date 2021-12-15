@@ -1,5 +1,7 @@
-$cBlack: black;
 $cWhite: white;
+$cBlack: black;
+$cMenuClose: $cBlack;
+$cMenuOpen: $cBlack;
 
 #container {
   position: relative;
@@ -32,6 +34,13 @@ body {
   position: fixed;
   right: 0;
   top: 60px;
+
+  &__main {
+    // BEM(Block Element Modifier)
+    padding: 0;
+    perspective: 2000px;
+    transform-style: preserve-3d;
+  }
 }
 
 .mobile-menu-btn {
@@ -41,7 +50,7 @@ body {
   cursor: pointer;
 
   & > span {
-    background-color: $cBlack;
+    background-color: $cMenuClose;
     width: 35px;
     height: 2px;
     display: block;
@@ -57,8 +66,8 @@ body {
 .menu-open {
   & .mobile-menu-btn {
     & > span {
-      background-color: $cWhite;
-       &:nth-child(1) {
+      background-color: $cMenuOpen;
+      &:nth-child(1) {
         transition-delay: 70ms;
         transform: translateY(11px) rotate(135deg);
       }
