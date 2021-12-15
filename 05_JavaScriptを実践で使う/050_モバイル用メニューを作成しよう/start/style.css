@@ -46,6 +46,31 @@ body {
           transform-style: preserve-3d;
 }
 
+.mobile-menu__item {
+  list-style: none;
+  display: block;
+  -webkit-transform: translate3d(0, 0, -1000px);
+          transform: translate3d(0, 0, -1000px);
+  padding: 0 40px;
+  -webkit-transition: opacity 0.2s, -webkit-transform 0.3s;
+  transition: opacity 0.2s, -webkit-transform 0.3s;
+  transition: transform 0.3s, opacity 0.2s;
+  transition: transform 0.3s, opacity 0.2s, -webkit-transform 0.3s;
+}
+
+.mobile-menu__link {
+  display: block;
+  margin-top: 30px;
+  color: black;
+  text-decoration: none;
+}
+
+.main-title {
+  font-weight: 600;
+  font-size: 25px;
+}
+
+.suv
 .mobile-menu-btn {
   background-color: unset;
   border: none;
@@ -53,6 +78,7 @@ body {
   cursor: pointer;
 }
 
+.suv
 .mobile-menu-btn > span {
   background-color: black;
   width: 35px;
@@ -65,6 +91,7 @@ body {
   transition: transform 0.7s, -webkit-transform 0.7s;
 }
 
+.suv
 .mobile-menu-btn > span:last-child {
   margin-bottom: 0;
 }
