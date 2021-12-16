@@ -1,7 +1,8 @@
-const swiper = new Swiper('.swiper', {
+const mySwiper = new Swiper('.swiper', {
   // Optional parameters
-  direction: 'vertical',
+  // direction: 'vertical',
   loop: true,
+  effect: 'fade',
 
   // If we need pagination
   pagination: {
