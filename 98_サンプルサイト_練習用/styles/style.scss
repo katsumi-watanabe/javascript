@@ -1,3 +1,7 @@
+@import "variables";
+@import "mixin";
+@import "hero-slider";
+
 @import "breakpoints/base";
 
 @media (min-width: 480px) {
